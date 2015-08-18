@@ -1,31 +1,29 @@
-function hour_string(num) {
+function hourString(num) {
   if (num < 10)
     return " " + num + "ish";
   return num + "ish";
-};
+}
 
 
 function update() {
 
   var now = new Date();
-  var lower_hour = now.getHours() % 12;
-  var upper_hour = lower_hour + 1;
-  if (lower_hour === 0)
-    lower_hour = 12;
+  var lowerHour = now.getHours() % 12;
+  var upperHour = lowerHour + 1;
+  if (lowerHour === 0)
+    lowerHour = 12;
 
   var minute = now.getMinutes();
-  var lower_opacity = 1 - (minute/60)
-  var upper_opacity = minute/60
+  var lowerOpacity = 1 - (minute / 60);
+  var upperOpacity = minute / 60;
 
+  $("#lower").text(hourString(lowerHour));
+  $("#upper").text(hourString(upperHour));
 
+  $("#lower").css("opacity", lowerOpacity);
+  $("#upper").css("opacity", upperOpacity);
 
-  $("#lower").text(hour_string(lower_hour));
-  $("#upper").text(hour_string(upper_hour));
-
-  $("#lower").css("opacity", lower_opacity);
-  $("#upper").css("opacity", upper_opacity);
-
-};
+}
 
 setInterval(update, 1000);
 update();
