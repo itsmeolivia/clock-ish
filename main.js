@@ -1,6 +1,6 @@
 function hourString(num) {
   if (num < 10)
-    return " " + num + "ish";
+    return "&nbsp;" + num + "ish";
   return num + "ish";
 }
 
@@ -17,8 +17,8 @@ function update() {
   var lowerOpacity = 1 - (minute / 60);
   var upperOpacity = minute / 60;
 
-  $("#lower").text(hourString(lowerHour));
-  $("#upper").text(hourString(upperHour));
+  $("#lower").html(hourString(lowerHour));
+  $("#upper").html(hourString(upperHour));
 
   $("#lower").css("opacity", lowerOpacity);
   $("#upper").css("opacity", upperOpacity);
